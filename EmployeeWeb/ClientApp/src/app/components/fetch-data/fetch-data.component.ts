@@ -10,22 +10,28 @@ import { Employee } from '../../models/employee/Employee';
 })
 export class FetchDataComponent {
   public forecasts: WeatherForecast[];
-  public employeeList: Employee[];
+  public employeeList;
 
-  constructor(employeeService: EmployeeService,
+  constructor(public employeeService: EmployeeService,
     http: HttpClient,
     @Inject('BASE_URL') baseUrl: string) {
     http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
-    //http.get<WeatherForecast[]>(baseUrl + 'api/Employee').subscribe(result => {
-    //  this.forecasts = result;
-    //}, error => console.error(error));
 
-    this.employeeList = employeeService.getCustomers();
-    console.log(this.employeeList);
+    this.getEmployees();
+  }
+
+  getEmployees() {
+    this.employeeService.employeeService().subscribe(
+      data => { this.employeeList = data;
+        console.log(this.employeeList);
+},
+      err => console.error(err));
+
   }
 }
+
 
 interface WeatherForecast {
   dateFormatted: string;
@@ -33,3 +39,5 @@ interface WeatherForecast {
   temperatureF: number;
   summary: string;
 }
+
+
