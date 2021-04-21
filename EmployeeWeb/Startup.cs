@@ -1,3 +1,5 @@
+using BusinessLogic;
+using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +29,9 @@ namespace EmployeeWeb
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddScoped<IEmployeeBusinessLogic, EmployeeBusinessLogic>();
+            services.AddScoped<IEmployeeDataAccess, EmployeeDataAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
