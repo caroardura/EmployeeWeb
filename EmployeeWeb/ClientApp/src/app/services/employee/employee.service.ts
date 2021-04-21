@@ -6,14 +6,14 @@ import { Employee } from '../../models/employee/Employee';
 export class EmployeeService {
   apiURL: string;
   constructor(public http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.apiURL = baseUrl;
+    this.apiURL = baseUrl + 'api/Employee/';
   }
 
   getEmployees() {
-    return this.http.get<Employee[]>(this.apiURL + 'api/Employee');
+    return this.http.get<Employee[]>(this.apiURL);
   }
 
   getEmployee(id: number) {
-    return this.http.get<Employee>(this.apiURL + 'api/Employee/' + id);
+    return this.http.get<Employee>(this.apiURL + id);
   }
 }

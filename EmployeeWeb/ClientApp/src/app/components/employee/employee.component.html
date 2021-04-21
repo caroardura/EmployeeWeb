@@ -1,30 +1,33 @@
 <div>
-  <h1>Employees</h1>
+  <div>
+    <h1>Employees</h1>
 
-  <input type="text" id="employeeId" name="employeeId" #employeeId>
+    <input type="text" id="employeeId" name="employeeId" #employeeId>
 
-  <button type="button" (click)="getEmployees(employeeId.value)">Get Employees</button>
+    <button type="button" (click)="getEmployees(employeeId.value)">Get Employees</button>
 
-  <p *ngIf="!employees"><em>Click 'Get Employees' button to see results or enter an employee existing id in the box and press the button</em></p>
-
-  <table class='table' *ngIf="employees">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Contract Type</th>
-        <th>Role</th>
-        <th>Role Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of employees">
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.contractTypeName }}</td>
-        <td>{{ employee.roleName }}</td>
-        <td>{{ employee.roleDescription }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <p *ngIf="!employees"><em>Click 'Get Employees' button to see results or enter an employee existing id in the box and press the button</em></p>
+  </div>
+  <div class="mb-3">
+    <table class='table table-striped' *ngIf="employees">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Contract Type</th>
+          <th>Role</th>
+          <th>Role Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.contractTypeName }}</td>
+          <td>{{ employee.roleName }}</td>
+          <td>{{ employee.roleDescription }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
