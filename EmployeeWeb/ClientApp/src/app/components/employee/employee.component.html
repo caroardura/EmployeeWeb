@@ -1,0 +1,30 @@
+<div>
+  <h1>Employees</h1>
+
+  <input type="text" id="id" name="id">
+
+  <button type="button" (click)="getEmployees()">Get Employees</button>
+
+  <p *ngIf="!employees"><em>Click 'Get Employees' button to see results</em></p>
+
+  <table class='table' *ngIf="employees">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contract Type</th>
+        <th>Role</th>
+        <th>Role Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.contractTypeName }}</td>
+        <td>{{ employee.roleName }}</td>
+        <td>{{ employee.roleDescription }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
