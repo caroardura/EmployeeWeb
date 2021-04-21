@@ -1,9 +1,9 @@
 <div>
   <h1>Employees</h1>
 
-  <input type="text" id="id" name="id">
+  <input type="text" id="employeeId" name="employeeId" #employeeId>
 
-  <button type="button" (click)="getEmployees()">Get Employees</button>
+  <button type="button" (click)="getEmployees(employeeId.value)">Get Employees</button>
 
   <p *ngIf="!employees"><em>Click 'Get Employees' button to see results</em></p>
 

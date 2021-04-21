@@ -9,7 +9,11 @@ export class EmployeeService {
     this.apiURL = baseUrl;
   }
 
-  employeeService() {
+  getEmployees() {
     return this.http.get<Employee[]>(this.apiURL + 'api/Employee');
+  }
+
+  getEmployee(id: number) {
+    return this.http.get<Employee[]>(this.apiURL + 'api/Employee/' + id);
   }
 }
