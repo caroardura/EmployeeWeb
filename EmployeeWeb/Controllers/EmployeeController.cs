@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogic;
+using DataAccess;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeWeb.Controllers
@@ -19,7 +18,7 @@ namespace EmployeeWeb.Controllers
 
         [HttpGet("")]
         //public IEnumerable<WeatherForecast> WeatherForecasts()
-        public object GetEmployees()
+        public Task<List<Employee>> GetEmployees()
         {
             return _employeeBusinessLogic.GetEmployees();
         }

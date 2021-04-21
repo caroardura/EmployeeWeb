@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
@@ -13,7 +14,7 @@ namespace BusinessLogic
         {
             _employeeDataAccess = employeeDataAccess;
         }
-        public object GetEmployees()
+        public Task<List<Employee>> GetEmployees()
         {
             return _employeeDataAccess.GetEmployeesAsync();
         }
