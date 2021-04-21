@@ -18,5 +18,10 @@ namespace BusinessLogic
         {
             return _employeeDataAccess.GetEmployeesAsync();
         }
+
+        public Task<Employee> GetEmployee(int employeeId)
+        {
+            return _employeeDataAccess.GetEmployeeAsync(employeeId);
+        }
     }
 }

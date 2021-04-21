@@ -14,6 +14,6 @@ export class EmployeeService {
   }
 
   getEmployee(id: number) {
-    return this.http.get<Employee[]>(this.apiURL + 'api/Employee/' + id);
+    return this.http.get<Employee>(this.apiURL + 'api/Employee/' + id);
   }
 }

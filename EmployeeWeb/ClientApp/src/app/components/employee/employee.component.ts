@@ -25,7 +25,7 @@ export class EmployeeComponent {
     else // User entered an id
       this.employeeService.getEmployee(id).subscribe(
         data => {
-          this.employees = data;
+          this.employees = [data];
         },
         err => console.error(err));
   }

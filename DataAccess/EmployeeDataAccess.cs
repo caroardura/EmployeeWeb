@@ -12,7 +12,13 @@ namespace DataAccess
             return ConsumeEmployeesAPI();
         }
 
-        public async Task<List<Employee>> ConsumeEmployeesAPI()
+        public async Task<Employee> GetEmployeeAsync(int employeeId)
+        {
+            var employeeList = await ConsumeEmployeesAPI();
+            return employeeList.Find(x => x.id == employeeId);
+        }
+
+        private async Task<List<Employee>> ConsumeEmployeesAPI()
         {
             List<Employee> employeeList = new List<Employee>();
 

@@ -5,7 +5,7 @@
 
   <button type="button" (click)="getEmployees(employeeId.value)">Get Employees</button>
 
-  <p *ngIf="!employees"><em>Click 'Get Employees' button to see results</em></p>
+  <p *ngIf="!employees"><em>Click 'Get Employees' button to see results or enter an employee existing id in the box and press the button</em></p>
 
   <table class='table' *ngIf="employees">
     <thead>

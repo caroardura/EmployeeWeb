@@ -8,5 +8,6 @@ namespace DataAccess
     public interface IEmployeeDataAccess
     {
         Task<List<Employee>> GetEmployeesAsync();
+        Task<Employee> GetEmployeeAsync(int employeeId);
     }
 }

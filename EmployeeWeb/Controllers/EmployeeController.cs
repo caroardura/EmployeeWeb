@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmployeeWeb.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class EmployeeController : Controller
     {
         IEmployeeBusinessLogic _employeeBusinessLogic;
@@ -21,6 +22,12 @@ namespace EmployeeWeb.Controllers
         public Task<List<Employee>> GetEmployees()
         {
             return _employeeBusinessLogic.GetEmployees();
+        }
+
+        [HttpGet("{employeeId}")]
+        public Task<Employee> GetEmployee(int employeeId)
+        {
+            return _employeeBusinessLogic.GetEmployee(employeeId);
         }
     }
 }
