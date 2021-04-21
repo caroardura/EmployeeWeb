@@ -22,7 +22,6 @@ namespace EmployeeWeb.Controllers
         public object GetEmployees()
         {
             return _employeeBusinessLogic.GetEmployees();
-            //return "hello world";
         }
     }
 }

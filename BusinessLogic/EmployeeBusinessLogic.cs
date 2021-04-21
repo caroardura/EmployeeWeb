@@ -15,7 +15,7 @@ namespace BusinessLogic
         }
         public object GetEmployees()
         {
-            return _employeeDataAccess.GetEmployees();
+            return _employeeDataAccess.GetEmployeesAsync();
         }
     }
 }
