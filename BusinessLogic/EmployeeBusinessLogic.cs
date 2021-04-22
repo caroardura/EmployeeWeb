@@ -1,7 +1,6 @@
-﻿using DataAccess;
-using System;
+﻿using AutoMapper;
+using DataAccess;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessLogic
@@ -11,7 +10,8 @@ namespace BusinessLogic
         private IEmployeeDataAccess _employeeDataAccess;
         private EmployeeFactory _employeeFactory;
 
-        public EmployeeBusinessLogic(IEmployeeDataAccess employeeDataAccess, EmployeeFactory employeeFactory)
+        public EmployeeBusinessLogic(IEmployeeDataAccess employeeDataAccess,
+            EmployeeFactory employeeFactory)
         {
             _employeeDataAccess = employeeDataAccess;
             _employeeFactory = employeeFactory;
@@ -25,7 +25,7 @@ namespace BusinessLogic
         {
             Task<EmployeeRaw> e = _employeeDataAccess.GetEmployeeAsync(employeeId);
             var eResult = e.Result;
-            var employee = _employeeFactory.GetEmployee(eResult.contractTypeName);
+            var employee = _employeeFactory.GetEmployee(eResult);
             return employee;
         }
     }

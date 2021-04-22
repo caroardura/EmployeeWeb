@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace BusinessLogic
 {
-    class EmployeeHourly : Employee
+    public class EmployeeHourly : Employee
     {
-        public override decimal CalculateAnnualSalary(decimal hourlySalary)
+        public override decimal CalculateAnnualSalary()
         {
-            return 120 * hourlySalary * 12;
+            return 120 * HourlySalary * 12;
         }
     }
 }

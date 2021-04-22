@@ -22,9 +22,8 @@ namespace BusinessLogic
         { get; set; }
         public decimal MonthlySalary
         { get; set; }
-        public decimal AnnualSalary
-        { get; set; }
+        public decimal AnnualSalary { get { return CalculateAnnualSalary(); } }
 
-        public abstract decimal CalculateAnnualSalary(decimal hourlySalary);
+        public abstract decimal CalculateAnnualSalary();
     }
 }

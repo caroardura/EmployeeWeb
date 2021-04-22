@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,14 +8,20 @@ namespace BusinessLogic
 {
     public class EmployeeFactory 
     {
-        public Employee GetEmployee(string contractTypeName)
+        private IMapper _mapper;
+
+        public EmployeeFactory(IMapper mapper)
         {
-            switch (contractTypeName)
+            _mapper = mapper;
+        }
+        public Employee GetEmployee(EmployeeRaw employee)
+        {
+            switch (employee.contractTypeName)
             {
                 case "HourlySalaryEmployee":
-                    return new EmployeeHourly();
+                    return _mapper.Map<EmployeeHourly>(employee);
                 default: // "MonthlySalaryEmployee"
-                    return new EmployeeMonthly();
+                    return _mapper.Map<EmployeeMonthly>(employee);
             }
         }
     }
