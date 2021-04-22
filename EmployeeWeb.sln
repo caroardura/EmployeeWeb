@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.28307.1500
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeWeb", "EmployeeWeb\EmployeeWeb.csproj", "{85FF9A1D-321F-406E-984B-B4D22A1FAF2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{CED59306-7A5E-4BCE-B35E-E857AFB3F451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{CED59306-7A5E-4BCE-B35E-E857AFB3F451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A0FA9766-BE87-44B0-ACE4-FEC4932D013B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A0FA9766-BE87-44B0-ACE4-FEC4932D013B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Test", "BusinessLogic.Test\BusinessLogic.Test.csproj", "{BAFDA279-CFBF-488D-93B0-7EBDD4A0F004}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A0FA9766-BE87-44B0-ACE4-FEC4932D013B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0FA9766-BE87-44B0-ACE4-FEC4932D013B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0FA9766-BE87-44B0-ACE4-FEC4932D013B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAFDA279-CFBF-488D-93B0-7EBDD4A0F004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAFDA279-CFBF-488D-93B0-7EBDD4A0F004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAFDA279-CFBF-488D-93B0-7EBDD4A0F004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAFDA279-CFBF-488D-93B0-7EBDD4A0F004}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

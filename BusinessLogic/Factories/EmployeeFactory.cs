@@ -14,6 +14,7 @@ namespace BusinessLogic
         {
             _mapper = mapper;
         }
+
         public Employee GetEmployee(EmployeeRaw employee)
         {
             switch (employee.contractTypeName)
