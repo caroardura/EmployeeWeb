@@ -1,13 +1,11 @@
 <div>
   <div class="margin-bottom">
     <h1>Employees</h1>
-    <input type="text" id="employeeId" name="employeeId" #employeeId>
-
+    <input type="text" id="employeeId" name="employeeId" placeholder="Insert employee Id" (keydown.enter)="getEmployees(employeeId.value)" #employeeId>
     <button type="button" class="button btn btn-primary" (click)="getEmployees(employeeId.value)">Get Employees</button>
-
     <p *ngIf="!employees"><em>Click 'Get Employees' button to see results or enter an employee existing id in the box and press the button</em></p>
   </div>
-  <div class="mb-3">
+  <div>
     <table class='table table-striped' *ngIf="employees">
       <thead>
         <tr>

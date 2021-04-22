@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../models/employee/Employee';
 import { isNumeric } from 'rxjs/util/isNumeric';
@@ -12,6 +12,7 @@ export class EmployeeComponent {
   public employees: Employee[];
 
   constructor(public employeeService: EmployeeService) {
+    this.getEmployees("");
   }
 
   getEmployees(id: string) {
@@ -21,12 +22,15 @@ export class EmployeeComponent {
           this.employees = data;
         },
         err => console.error(err));
-    else if (!isNumeric(id)) 
+    else if (!isNumeric(id))
       alert("Please enter a number or leave it empty to get all the employees.");
     else // User entered an id
       this.employeeService.getEmployee(id).subscribe(
         data => {
-          this.employees = [data];
+          if (data == null)
+            alert("Employee not found");
+          else
+            this.employees = [data];
         },
         err => console.error(err));
   }

@@ -32,7 +32,7 @@ namespace BusinessLogic
         public async Task<Employee> GetEmployee(int employeeId)
         {
             var employeeRaw = await _employeeDataAccess.GetEmployeeAsync(employeeId);
-            var employee = _employeeFactory.GetEmployee(employeeRaw);
+            var employee = employeeRaw != null ? _employeeFactory.GetEmployee(employeeRaw) : null;
             return employee;
         }
     }
