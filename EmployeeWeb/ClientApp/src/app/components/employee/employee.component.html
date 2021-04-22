@@ -16,16 +16,16 @@
           <th>Name</th>
           <th>Contract Type</th>
           <th>Role</th>
-          <th>Role Description</th>
+          <th>Annual Salary</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let employee of employees">
           <td>{{ employee.id }}</td>
           <td>{{ employee.name }}</td>
-          <td>{{ employee.contractTypeName }}</td>
+          <td>{{ employee.contractTypeName == 'MonthlySalaryEmployee' ? 'Monthly salary' : 'Hourly salary' }}</td>
           <td>{{ employee.roleName }}</td>
-          <td>{{ employee.roleDescription }}</td>
+          <td>{{ employee.annualSalary }}</td>
         </tr>
       </tbody>
     </table>

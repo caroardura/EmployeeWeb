@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using BusinessLogic;
 using DataAccess;
+using EmployeeWeb.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeWeb.Controllers
@@ -10,24 +12,26 @@ namespace EmployeeWeb.Controllers
     [ApiController]
     public class EmployeeController : Controller
     {
-        IEmployeeBusinessLogic _employeeBusinessLogic;
+        private IEmployeeBusinessLogic _employeeBusinessLogic;
+        private IMapper _mapper;
 
-        public EmployeeController(IEmployeeBusinessLogic employeeBusinessLogic)
+        public EmployeeController(IEmployeeBusinessLogic employeeBusinessLogic, IMapper mapper)
         {
             _employeeBusinessLogic = employeeBusinessLogic;
+            _mapper = mapper;
         }
 
         [HttpGet("")]
-        //public IEnumerable<WeatherForecast> WeatherForecasts()
         public Task<List<EmployeeRaw>> GetEmployees()
         {
             return _employeeBusinessLogic.GetEmployees();
         }
 
         [HttpGet("{employeeId}")]
-        public Employee GetEmployee(int employeeId)
+        public EmployeeDTO GetEmployee(int employeeId)
         {
-            return _employeeBusinessLogic.GetEmployee(employeeId);
+            var employee = _employeeBusinessLogic.GetEmployee(employeeId);
+            return _mapper.Map<EmployeeDTO>(employee);
         }
     }
 }
