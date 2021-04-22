@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DataAccess;
+﻿using DataAccess;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -16,13 +15,13 @@ namespace BusinessLogic
             _employeeDataAccess = employeeDataAccess;
             _employeeFactory = employeeFactory;
         }
-        public List<Employee> GetEmployees()
+
+        public async Task<List<Employee>> GetEmployees()
         {
             List<Employee> employeeList = new List<Employee>();
-            Task<List<EmployeeRaw>> e = _employeeDataAccess.GetEmployeesAsync();
-            var eResult = e.Result;
+            var rawEmployees = await _employeeDataAccess.GetEmployeesAsync();
 
-            foreach (var item in eResult)
+            foreach (var item in rawEmployees)
             {
                 employeeList.Add(_employeeFactory.GetEmployee(item));
             }
@@ -30,11 +29,10 @@ namespace BusinessLogic
             return employeeList;
         }
 
-        public Employee GetEmployee(int employeeId)
+        public async Task<Employee> GetEmployee(int employeeId)
         {
-            Task<EmployeeRaw> e = _employeeDataAccess.GetEmployeeAsync(employeeId);
-            var eResult = e.Result;
-            var employee = _employeeFactory.GetEmployee(eResult);
+            var employeeRaw = await _employeeDataAccess.GetEmployeeAsync(employeeId);
+            var employee = _employeeFactory.GetEmployee(employeeRaw);
             return employee;
         }
     }

@@ -1,10 +1,9 @@
 <div>
-  <div>
+  <div class="margin-bottom">
     <h1>Employees</h1>
-
     <input type="text" id="employeeId" name="employeeId" #employeeId>
 
-    <button type="button" (click)="getEmployees(employeeId.value)">Get Employees</button>
+    <button type="button" class="button btn btn-primary" (click)="getEmployees(employeeId.value)">Get Employees</button>
 
     <p *ngIf="!employees"><em>Click 'Get Employees' button to see results or enter an employee existing id in the box and press the button</em></p>
   </div>
@@ -12,10 +11,11 @@
     <table class='table table-striped' *ngIf="employees">
       <thead>
         <tr>
-          <th>Id</th>
+          <th>#</th>
           <th>Name</th>
-          <th>Contract Type</th>
           <th>Role</th>
+          <th>Contract Type</th>
+          <th>Salary</th>
           <th>Annual Salary</th>
         </tr>
       </thead>
@@ -23,9 +23,10 @@
         <tr *ngFor="let employee of employees">
           <td>{{ employee.id }}</td>
           <td>{{ employee.name }}</td>
-          <td>{{ employee.contractTypeName == 'MonthlySalaryEmployee' ? 'Monthly salary' : 'Hourly salary' }}</td>
           <td>{{ employee.roleName }}</td>
-          <td>{{ employee.annualSalary }}</td>
+          <td>{{ employee.contractTypeName == 'MonthlySalaryEmployee' ? 'Monthly salary' : 'Hourly salary' }}</td>
+          <td class="text-center">$ {{ employee.contractTypeName == 'MonthlySalaryEmployee' ? employee.monthlySalary : employee.hourlySalary }}</td>
+          <td class="text-center">$ {{ employee.annualSalary }}</td>
         </tr>
       </tbody>
     </table>

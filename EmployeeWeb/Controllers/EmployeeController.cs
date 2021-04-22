@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLogic;
 using EmployeeWeb.DTOs;
@@ -20,16 +21,16 @@ namespace EmployeeWeb.Controllers
         }
 
         [HttpGet("{employeeId}")]
-        public EmployeeDTO GetEmployee(int employeeId)
+        public async Task<EmployeeDTO> GetEmployee(int employeeId)
         {
-            var employee = _employeeBusinessLogic.GetEmployee(employeeId);
+            var employee = await _employeeBusinessLogic.GetEmployee(employeeId);
             return _mapper.Map<EmployeeDTO>(employee);
         }
 
         [HttpGet("")]
-        public List<EmployeeDTO> GetEmployees()
+        public async Task<List<EmployeeDTO>> GetEmployees()
         {
-            List<Employee> employeeList = _employeeBusinessLogic.GetEmployees();
+            List<Employee> employeeList = await _employeeBusinessLogic.GetEmployees();
             return _mapper.Map<List<EmployeeDTO>>(employeeList);
         }
     }

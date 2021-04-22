@@ -5,7 +5,8 @@ import { isNumeric } from 'rxjs/util/isNumeric';
 
 @Component({
   selector: 'app-employee',
-  templateUrl: './employee.component.html'
+  templateUrl: './employee.component.html',
+  styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent {
   public employees: Employee[];
