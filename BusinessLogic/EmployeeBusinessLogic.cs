@@ -14,14 +14,17 @@ namespace BusinessLogic
         {
             _employeeDataAccess = employeeDataAccess;
         }
-        public Task<List<Employee>> GetEmployees()
+        public Task<List<EmployeeRaw>> GetEmployees()
         {
             return _employeeDataAccess.GetEmployeesAsync();
         }
 
-        public Task<Employee> GetEmployee(int employeeId)
+        public Employee GetEmployee(int employeeId)
         {
-            return _employeeDataAccess.GetEmployeeAsync(employeeId);
+            Task<EmployeeRaw> e = _employeeDataAccess.GetEmployeeAsync(employeeId);
+            var eResult = e.Result;
+            var employee = EmployeeFactory.GetEmployee(eResult.contractTypeName);
+            return employee;
         }
     }
 }

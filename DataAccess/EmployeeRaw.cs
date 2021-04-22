@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccess
 {
-    public class Employee
+    public class EmployeeRaw
     {
         public int id;
         public string name;

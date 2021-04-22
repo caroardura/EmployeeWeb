@@ -7,27 +7,26 @@ namespace DataAccess
 {
     public class EmployeeDataAccess : IEmployeeDataAccess
     {
-        public Task<List<Employee>> GetEmployeesAsync()
-        {
-            return ConsumeEmployeesAPI();
-        }
-
-        public async Task<Employee> GetEmployeeAsync(int employeeId)
+        public async Task<EmployeeRaw> GetEmployeeAsync(int employeeId)
         {
             var employeeList = await ConsumeEmployeesAPI();
             return employeeList.Find(x => x.id == employeeId);
         }
-
-        private async Task<List<Employee>> ConsumeEmployeesAPI()
+        public Task<List<EmployeeRaw>> GetEmployeesAsync()
         {
-            List<Employee> employeeList = new List<Employee>();
+            return ConsumeEmployeesAPI();
+        }
+
+        private async Task<List<EmployeeRaw>> ConsumeEmployeesAPI()
+        {
+            List<EmployeeRaw> employeeList = new List<EmployeeRaw>();
 
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("http://masglobaltestapi.azurewebsites.net/api/Employees"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    employeeList = JsonConvert.DeserializeObject<List<Employee>>(apiResponse);
+                    employeeList = JsonConvert.DeserializeObject<List<EmployeeRaw>>(apiResponse);
                 }
             }
 

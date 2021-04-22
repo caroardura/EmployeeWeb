@@ -19,13 +19,13 @@ namespace EmployeeWeb.Controllers
 
         [HttpGet("")]
         //public IEnumerable<WeatherForecast> WeatherForecasts()
-        public Task<List<Employee>> GetEmployees()
+        public Task<List<EmployeeRaw>> GetEmployees()
         {
             return _employeeBusinessLogic.GetEmployees();
         }
 
         [HttpGet("{employeeId}")]
-        public Task<Employee> GetEmployee(int employeeId)
+        public Employee GetEmployee(int employeeId)
         {
             return _employeeBusinessLogic.GetEmployee(employeeId);
         }
