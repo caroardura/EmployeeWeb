@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLogic;
-using DataAccess;
 using EmployeeWeb.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,17 +19,18 @@ namespace EmployeeWeb.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("")]
-        public Task<List<EmployeeRaw>> GetEmployees()
-        {
-            return _employeeBusinessLogic.GetEmployees();
-        }
-
         [HttpGet("{employeeId}")]
         public EmployeeDTO GetEmployee(int employeeId)
         {
             var employee = _employeeBusinessLogic.GetEmployee(employeeId);
             return _mapper.Map<EmployeeDTO>(employee);
+        }
+
+        [HttpGet("")]
+        public List<EmployeeDTO> GetEmployees()
+        {
+            List<Employee> employeeList = _employeeBusinessLogic.GetEmployees();
+            return _mapper.Map<List<EmployeeDTO>>(employeeList);
         }
     }
 }

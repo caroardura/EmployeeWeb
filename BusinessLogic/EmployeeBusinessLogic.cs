@@ -16,9 +16,18 @@ namespace BusinessLogic
             _employeeDataAccess = employeeDataAccess;
             _employeeFactory = employeeFactory;
         }
-        public Task<List<EmployeeRaw>> GetEmployees()
+        public List<Employee> GetEmployees()
         {
-            return _employeeDataAccess.GetEmployeesAsync();
+            List<Employee> employeeList = new List<Employee>();
+            Task<List<EmployeeRaw>> e = _employeeDataAccess.GetEmployeesAsync();
+            var eResult = e.Result;
+
+            foreach (var item in eResult)
+            {
+                employeeList.Add(_employeeFactory.GetEmployee(item));
+            }
+
+            return employeeList;
         }
 
         public Employee GetEmployee(int employeeId)

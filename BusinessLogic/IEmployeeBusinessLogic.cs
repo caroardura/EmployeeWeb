@@ -7,6 +7,6 @@ namespace BusinessLogic
     public interface IEmployeeBusinessLogic
     {
         Employee GetEmployee(int employeeId);
-        Task<List<EmployeeRaw>> GetEmployees();
+        List<Employee> GetEmployees();
     }
 }
