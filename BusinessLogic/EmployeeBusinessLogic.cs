@@ -8,11 +8,13 @@ namespace BusinessLogic
 {
     public class EmployeeBusinessLogic : IEmployeeBusinessLogic
     {
-        IEmployeeDataAccess _employeeDataAccess;
+        private IEmployeeDataAccess _employeeDataAccess;
+        private EmployeeFactory _employeeFactory;
 
-        public EmployeeBusinessLogic(IEmployeeDataAccess employeeDataAccess)
+        public EmployeeBusinessLogic(IEmployeeDataAccess employeeDataAccess, EmployeeFactory employeeFactory)
         {
             _employeeDataAccess = employeeDataAccess;
+            _employeeFactory = employeeFactory;
         }
         public Task<List<EmployeeRaw>> GetEmployees()
         {
@@ -23,7 +25,7 @@ namespace BusinessLogic
         {
             Task<EmployeeRaw> e = _employeeDataAccess.GetEmployeeAsync(employeeId);
             var eResult = e.Result;
-            var employee = EmployeeFactory.GetEmployee(eResult.contractTypeName);
+            var employee = _employeeFactory.GetEmployee(eResult.contractTypeName);
             return employee;
         }
     }

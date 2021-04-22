@@ -4,9 +4,9 @@ using System.Text;
 
 namespace BusinessLogic
 {
-    public static class EmployeeFactory 
+    public class EmployeeFactory 
     {
-        public static Employee GetEmployee(string contractTypeName)
+        public Employee GetEmployee(string contractTypeName)
         {
             switch (contractTypeName)
             {
